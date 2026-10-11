@@ -3,9 +3,26 @@
 
 local Config = {
 	GameName = "Zombie Defense Tycoon",
-	Version = "0.2.2",
+	Version = "0.3.0",
 
 	StartMoney = 100,
+
+	-- HUD (Anzeige am Bildschirm)
+	Hud = {
+		HotbarSlots = 6, -- Anzahl Waffen-Slots in der Hotbar (max. 9, Tasten 1–9)
+		Keys = {
+			Inventory = Enum.KeyCode.G,
+			Shop = Enum.KeyCode.P,
+			Build = Enum.KeyCode.B,
+		},
+	},
+
+	-- Nur zum Testen – vor der Veröffentlichung abschalten
+	Debug = {
+		GiveTestWeapons = true, -- 3 Platzhalter-Waffen (Pistol, Shotgun, Machete) ohne Funktion
+		TestIncome = 10, -- Geld, das jeder Spieler regelmäßig bekommt (0 = aus)
+		TestIncomeInterval = 3, -- alle X Sekunden
+	},
 
 	-- Welt (wird beim Serverstart per Skript erzeugt)
 	World = {
