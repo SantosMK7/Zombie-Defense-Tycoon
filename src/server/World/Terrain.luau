@@ -104,8 +104,6 @@ function Terrain.build()
 		task.wait() -- Server nicht einfrieren
 	end
 
-	-- Kleiner Erdfleck rund ums Lagerfeuer
-	terrain:FillCylinder(CFrame.new(0, -2, 0), 4, 9, Enum.Material.Ground)
 end
 
 return Terrain

@@ -19,6 +19,7 @@ function NightLighting.apply()
 	end
 
 	Lighting.ClockTime = L.ClockTime
+	Lighting.GeographicLatitude = L.GeographicLatitude
 	Lighting.Brightness = L.Brightness
 	Lighting.Ambient = L.Ambient
 	Lighting.OutdoorAmbient = L.OutdoorAmbient
@@ -33,14 +34,14 @@ function NightLighting.apply()
 	sky.CelestialBodiesShown = true
 	sky.Parent = Lighting
 
-	-- Dunst lässt den Wald in der Ferne blau-grau verschwimmen
+	-- rötlicher Dunst lässt den Wald in der Ferne verschwimmen
 	local atmosphere = Instance.new("Atmosphere")
 	atmosphere.Density = 0.36
 	atmosphere.Offset = 0.15
-	atmosphere.Color = Color3.fromRGB(70, 80, 120)
-	atmosphere.Decay = Color3.fromRGB(35, 40, 70)
-	atmosphere.Glare = 0
-	atmosphere.Haze = 1.4
+	atmosphere.Color = L.AtmosphereColor
+	atmosphere.Decay = L.AtmosphereDecay
+	atmosphere.Glare = 0.4
+	atmosphere.Haze = 1.8
 	atmosphere.Parent = Lighting
 
 	local bloom = Instance.new("BloomEffect")
@@ -53,7 +54,7 @@ function NightLighting.apply()
 	color.Brightness = 0.03
 	color.Contrast = 0.08
 	color.Saturation = -0.05
-	color.TintColor = Color3.fromRGB(228, 232, 255)
+	color.TintColor = L.TintColor
 	color.Parent = Lighting
 end
 

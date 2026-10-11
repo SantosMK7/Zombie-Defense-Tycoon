@@ -3,7 +3,7 @@
 
 local Config = {
 	GameName = "Zombie Defense Tycoon",
-	Version = "0.2.0",
+	Version = "0.2.1",
 
 	StartMoney = 100,
 
@@ -37,13 +37,20 @@ local Config = {
 
 	-- Nacht-Beleuchtung (hell genug, um etwas zu sehen)
 	Lighting = {
-		ClockTime = 0, -- 0 = Mitternacht
+		-- Mondhöhe: 0 = Mitternacht (Mond ganz oben). Je näher an 5, desto tiefer steht der Mond.
+		ClockTime = 3.6,
+		GeographicLatitude = 55, -- höher = Mond wandert flacher über den Himmel
 		Brightness = 2,
-		Ambient = Color3.fromRGB(45, 50, 75),
-		OutdoorAmbient = Color3.fromRGB(95, 105, 145),
-		ExposureCompensation = 0.25,
-		MoonSize = 18,
+		Ambient = Color3.fromRGB(55, 45, 65),
+		OutdoorAmbient = Color3.fromRGB(105, 95, 130),
+		ExposureCompensation = 0.3,
+		MoonSize = 26,
 		StarCount = 4000,
+
+		-- Rotstich für Zombie-Apokalypse-Stimmung
+		AtmosphereColor = Color3.fromRGB(125, 60, 70), -- Dunst/Horizont
+		AtmosphereDecay = Color3.fromRGB(70, 22, 32),
+		TintColor = Color3.fromRGB(255, 228, 228),
 	},
 }
 
