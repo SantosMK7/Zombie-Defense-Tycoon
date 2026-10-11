@@ -124,21 +124,6 @@ local function buildCampfire(parent: Instance)
 		})
 	end
 
-	-- Brennholzstapel
-	for row = 0, 2 do
-		local count = 3 - row
-		for i = 1, count do
-			PartUtil.part(model, {
-				Name = "Brennholz",
-				Shape = Enum.PartType.Cylinder,
-				Size = Vector3.new(4, 0.9, 0.9),
-				CFrame = CFrame.new(-9.5, 0.45 + row * 0.8, 4.5 + (i - (count + 1) / 2) * 0.95),
-				Color = if (i + row) % 2 == 0 then WOOD else DARK_WOOD,
-				Material = Enum.Material.Wood,
-			})
-		end
-	end
-
 	model.Parent = parent
 end
 
