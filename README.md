@@ -16,3 +16,6 @@ Roblox-Spiel, gebaut mit VS Code, Rojo und GitHub.
 | `src/shared/` | ReplicatedStorage/Shared |
 
 Dateiendungen: `.server.luau` = Script, `.client.luau` = LocalScript, `.luau` = ModuleScript.
+
+## Welt
+Die Welt (Terrain, Wald, Nacht-Beleuchtung, Camp) wird beim **Serverstart** von `src/server/World/` erzeugt – sie ist also erst nach **Play** zu sehen. Einstellungen (Hügelhöhe, Baumanzahl, Helligkeit …) stehen in `src/shared/Config.luau` unter `World` und `Lighting`.
