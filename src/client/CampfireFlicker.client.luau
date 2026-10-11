@@ -16,6 +16,6 @@ local t = 0
 RunService.RenderStepped:Connect(function(dt)
 	t += dt
 	local flicker = math.noise(t * 3.1, 0.5) + math.noise(t * 7.3, 2.5) * 0.5
-	light.Brightness = baseBrightness + flicker * 1.2
+	light.Brightness = baseBrightness + flicker * 0.6
 	light.Range = baseRange + flicker * 3
 end)

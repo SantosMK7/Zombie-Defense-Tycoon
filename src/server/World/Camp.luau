@@ -5,6 +5,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local Config = require(ReplicatedStorage.Shared.Config)
 local PartUtil = require(script.Parent.PartUtil)
+local Terrain = require(script.Parent.Terrain)
 
 local W = Config.World
 local UPRIGHT = PartUtil.UPRIGHT
@@ -92,8 +93,8 @@ local function buildCampfire(parent: Instance)
 	local light = Instance.new("PointLight")
 	light.Name = "FeuerLicht" -- der Client lässt dieses Licht flackern
 	light.Color = Color3.fromRGB(255, 145, 65)
-	light.Brightness = 3
-	light.Range = 40
+	light.Brightness = 1.5
+	light.Range = 32
 	light.Shadows = true
 	light.Parent = embers
 
@@ -206,8 +207,8 @@ local function buildLantern(parent: Instance, position: Vector3)
 
 	local light = Instance.new("PointLight")
 	light.Color = LAMP
-	light.Brightness = 1.6
-	light.Range = 24
+	light.Brightness = 1
+	light.Range = 22
 	light.Parent = lamp
 
 	model.Parent = parent
@@ -252,6 +253,16 @@ function Camp.build(root: Instance)
 		decal:Destroy()
 	end
 	spawn.Parent = camp
+
+	-- Alles auf die tatsächliche Terrain-Oberfläche setzen (gebaut wurde auf y = 0)
+	for _, child in camp:GetChildren() do
+		if child:IsA("Model") then
+			local pivot = child:GetPivot()
+			child:PivotTo(pivot + Vector3.new(0, Terrain.getSurfaceY(pivot.X, pivot.Z), 0))
+		elseif child:IsA("BasePart") then
+			child.CFrame += Vector3.new(0, Terrain.getSurfaceY(child.Position.X, child.Position.Z), 0)
+		end
+	end
 end
 
 return Camp

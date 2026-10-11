@@ -43,6 +43,16 @@ function Terrain.getHeight(x: number, z: number): number
 	return blend * (hills + edge)
 end
 
+-- Tatsächliche Oberfläche an (x, z) per Raycast. Genauer als getHeight, weil das
+-- glatte Roblox-Terrain die Oberfläche leicht anders darstellt als berechnet.
+function Terrain.getSurfaceY(x: number, z: number): number
+	local params = RaycastParams.new()
+	params.FilterType = Enum.RaycastFilterType.Include
+	params.FilterDescendantsInstances = { workspace.Terrain }
+	local result = workspace:Raycast(Vector3.new(x, 200, z), Vector3.new(0, -400, 0), params)
+	return if result then result.Position.Y else Terrain.getHeight(x, z)
+end
+
 function Terrain.build()
 	local terrain = workspace.Terrain
 	terrain:Clear()
@@ -56,6 +66,14 @@ function Terrain.build()
 	end)
 	if not ok then
 		warn("[Welt] Terrain.Decoration konnte nicht gesetzt werden – bitte in Studio manuell anhaken.")
+	end
+
+	-- Länge der Grashalme (0.1 = sehr kurz … 1 = sehr hoch)
+	local okLength = pcall(function()
+		(terrain :: any).GrassLength = W.GrassLength
+	end)
+	if not okLength then
+		warn("[Welt] Terrain.GrassLength konnte nicht gesetzt werden – bitte in Studio manuell einstellen.")
 	end
 
 	local half = W.MapSize / 2

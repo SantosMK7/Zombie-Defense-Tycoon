@@ -26,7 +26,7 @@ function NightLighting.apply()
 	Lighting.ExposureCompensation = L.ExposureCompensation
 	Lighting.GlobalShadows = true
 	Lighting.EnvironmentDiffuseScale = 0.4
-	Lighting.EnvironmentSpecularScale = 0.4
+	Lighting.EnvironmentSpecularScale = 0.2
 
 	local sky = Instance.new("Sky")
 	sky.StarCount = L.StarCount
@@ -45,9 +45,9 @@ function NightLighting.apply()
 	atmosphere.Parent = Lighting
 
 	local bloom = Instance.new("BloomEffect")
-	bloom.Intensity = 0.6
-	bloom.Size = 24
-	bloom.Threshold = 1.4
+	bloom.Intensity = 0.35
+	bloom.Size = 20
+	bloom.Threshold = 2.2
 	bloom.Parent = Lighting
 
 	local color = Instance.new("ColorCorrectionEffect")

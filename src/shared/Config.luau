@@ -3,7 +3,7 @@
 
 local Config = {
 	GameName = "Zombie Defense Tycoon",
-	Version = "0.2.1",
+	Version = "0.2.2",
 
 	StartMoney = 100,
 
@@ -20,6 +20,7 @@ local Config = {
 		EdgeRise = 26, -- Landschaft steigt zum Rand hin an (Wald wirkt dadurch höher)
 		EdgeRiseStart = 300,
 		GrassColor = Color3.fromRGB(58, 92, 44),
+		GrassLength = 0.45, -- Grashalme: 0.1 = kurz … 1 = hoch (vorher Standard ~0.7)
 
 		-- Wald
 		ForestInnerRadius = 230, -- Wald beginnt hier ...
@@ -43,7 +44,7 @@ local Config = {
 		Brightness = 2,
 		Ambient = Color3.fromRGB(55, 45, 65),
 		OutdoorAmbient = Color3.fromRGB(105, 95, 130),
-		ExposureCompensation = 0.3,
+		ExposureCompensation = 0,
 		MoonSize = 26,
 		StarCount = 4000,
 
